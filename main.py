@@ -33,6 +33,11 @@ def blur_faces(image_path, output_path, output_error_path, watermark_path):
 
     if len(faces) == 0:
         print(f"No faces found in {image_path}. Skipping...")
+        
+        # Create the folder for unblurred photos if it doesn't exist
+        if not os.path.exists(os.path.dirname(output_error_path)):
+            os.makedirs(os.path.dirname(output_error_path))
+
         cv2.imwrite(output_error_path, image)
         return False
 
@@ -62,7 +67,7 @@ def process_folder(input_folder, output_folder, output_error, watermark_path):
         output_error_path = os.path.join(output_error, filename)
 
         if os.path.isdir(input_path):
-            p, s = process_folder(input_path, output_path)
+            p, s = process_folder(input_path, output_path, output_error_path, watermark_path)
             processed += p
             skipped += s
         elif filename.lower().endswith(('.png', '.jpg', '.jpeg', '.tiff', '.bmp', '.gif')):

@@ -35,7 +35,7 @@ def process_folder(input_folder, output_folder, output_error, watermark_path):
         output_error_path = os.path.join(output_error, filename)
     
         if os.path.isdir(input_path):
-            p, s = process_folder(input_path, output_path)
+            p, s = process_folder(input_path, output_path, output_error_path, watermark_path)
             processed += p
             skipped += s
         elif filename.lower().endswith(('.png', '.jpg', '.jpeg', '.tiff', '.bmp', '.gif')):
