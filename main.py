@@ -84,6 +84,6 @@ if __name__ == "__main__":
     input_folder = "data/photo"
     output_folder = "blured_photos_with_watermark"
     output_error = "unblured_photos"
-    watermark_path = "LOGO-GORIZONTAL1.png"
+    watermark_path = "logo.png"
 
     process_folder(input_folder, output_folder, output_error, watermark_path)
